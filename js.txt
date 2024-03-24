@@ -1,0 +1,1375 @@
+ 1) code step by step full video
+2) react with typescript video freecodecamp
+3) interview video
+4) react small projects
+
+A.C Vibes for english songs
+
+Server url + api endpoint = rest api 
+
+28+44+40+25
+
+Notes:-
+
+1) Inside return :- JSX and   <Components/> only.
+Variable assigning and functions and States all this thing should be written before return.
+
+2) States:-
+	import useState in App.js,
+Destructure inside function but before return. useState can only be used in functional components.
+State is private property of this component
+
+For definining state in class components we need to use constructor 
+Constructor (){
+    Super();
+    this.state = {   
+        name:"Aniket"
+     }
+  }
+
+render(){
+	return( the jsx part )
+}
+
+For updating data use arrow function in jsx {()=>this.setState({name:"Bhadke"})}
+
+fName(){
+	this.setState({name:'Bhadke'})
+}
+[in class component :- onClick={()=>this.fName()}      ]
+
+3) by using super keyword we can directly access all content and methods of extends class or 
+inherited class.
+
+3) Props:- Props can be used to communicate between the components. We can send data from one component 
+to another using props.
+
+	class component   <User count={this.state.count} />
+	function component  <User count={count} />
+
+        In functional components access props in function bracket. (props)
+	In class components access props in jsx, {this.props.propName}
+
+Props can only be changed in Parent components from where it's been sent.
+We can't change it in child component.
+
+4) whenever use map in JSX try to send all html in single tag. Try not to use curly brackets.
+
+5) useState:- this hook is use to define component state.
+
+6) useEffect:- this hook helps us to perform component lifecycle methods. 
+useEffect (() => {
+   ), [ ]  }   Act like mounting phase.
+	This will call once, without dependency array it will call on every update.
+	We can use multiple useEffect in single component.
+
+7) dependancy array:- it is use to trigger the change between state and based on that 
+we can rerender the component.
+useEffect (() => {
+   ), [ count ] }   Act like updating phase.
+
+8) useEffect (( ) => {
+     return ( ) => {
+         Act like unmounting phase.
+         Clean up code is here.
+     }
+   ), [ count ] }
+   This will stop all the calls and continues process.
+
+9) useNavigate:- this hook is use to Navigate internally.
+
+5) pureComponent :- only used in class components. In pure component render method calls only, 
+when their is something updated if previous state and current state both are same 
+then render method doesn't call. so in that way it prevents unnecesary re-rendering.
+it works with both state and props.
+
+normal component :- class App extends React.Component(){}  this will rerender no matter state is same.
+pure compo :- class App extends React.PureComponent(){}   this will not rerender if the state is same.
+
+6) useMemo:- only used in functional components. So basically we use useMemo and pureComponent 
+for preventing unnecesary function calls.
+const multiCountMemo = useMemo(() => {
+	console.log("multicount")
+	return count * 5;
+},[count])
+
+it means useMemo will call the function only when the count is updated.
+
+7) createRef:- (class components) using createRef we can access dom elements. 
+inside constructor create object to updating state. 
+For using createRef inside constructor :-  this.varName=createRef()
+
+	(Ref:- they are use to manage focuse, text selection and media playback.)
+
+8) useRef:- let varName = useRef ()
+function abc( ){varName.current.value="1000"}
+
+jsx part :- <input type="text" ref={varName} />
+		<button OnClick={abc}> click </button>
+
+*)what is useRef
+useRef is a react hook, it is commonly use for accessing dom
+elements. we can access element like input using ref attribute
+and manege its focus, or color and other things of that 
+element. 
+and it is very similar to state.
+in that we can store the previous value and it will persist
+between the render, it will not cause a rerender like 
+state does.
+
+so ref are very usefull not only for accesing dom element 
+but they are very usefull in persisting value without 
+causing a rerender.
+
+
+9) why use Link and not anchor tag:- because anchor tags reload page but Link never reload the page 
+that's why we should use Link tags 
+
+*) constructor is also life cycle method which calls first.
+
+10) componentDidMount :- this is the method we use in 1st phase of component lifecycle.  
+It calls just after render method calls, 
+means when our constructor and states are ready and jsx is ready. then only this method will call. 
+
+we can call api here because when this method will call, our html would have been allready ready.
+
+11) return will execute the html element but that element need to be defined in jsx extension.
+ 
+12) componentDidUpdate:- this is the method we use in 2nd phase of component lifecycle. 
+It calls after something gets update in component. Like state or Props.
+
+their is anothor method call shouldComponentUpdate 
+we can set a condition on componentDidUpdate using shouldComponentUpdate. we have to set it false.
+
+13) componentWillUnmount:- this is the method we use in 3rd phase of component lifecycle. 
+so when we want to remove our component then we use this method.
+this method will call just before we close the component. 
+so we can unsubscribe all async calls in this method. in that way we can 
+avoid memory leak from component. 
+
+14) when life cycle method take place in react
+:- 	when component is loaded, 
+	when component is updated with states or Props and 
+	When component is removed.
+
+16) console.log flow
+       1) constructor (){}
+       2) render(){}
+Call every time
+       3) return ()
+       
+       4) componentDidMount(){}
+this method calls only when component mount 
+(We call api here)
+
+       5) shouldComponentUpdate(){
+           If(condition){
+             return false/true ; 
+             }}
+ It can stop rendering
+ Means it allows us to render our component on a specific condition (if)
+       
+       6) componentDidUpdate(pp,ps){}        
+this method calls only if something updated in component
+       It takes 2 parameters
+      
+ Previous props & Previous state
+
+	7)componentWillUnmount()
+
+17) React.PureComponent
+pureComponent is only used in class components. In pure component render method calls only, 
+when their is something updated if previous state and current state both are same 
+then render method doesn't call. so in that way it prevents unnecesary re-rendering.
+and It helps to increase the applications performance.
+it works with both state and props
+
+pureComponent == useMemo,useCallback
+
+18) useMemo ( ( ) => {  }, [  ] )
+:- useMemo is a hook, same like a pureComponent, we use it to prevents unnecessary function calls.
+     So with the help of useMemo we can specify, when any function should call and when it shouldn't.
+
+19) Controlled component:- (codeStepbystep vid 6.32.30)
+	They do not maintain their own state, data is controlled by parent component.
+So basically in react
+  When we control any dom element (input fields) using state it's called as controlled component. 
+	const [val, setVal] = useState('')
+  <Input value={val} onChange={(e)=>setVal(e.target.value)}  />
+  
+20) uncontrolled component:- They do maintain their own state, data is controlled by DOM.
+Ref are use to get their currunt value. 
+(When we use useRef or creatref it's a uncontrolled component.)
+
+21) Hoc:- HOC is a function that takes a component as an argument and returns an enhanced version. 
+We can pass a component as a prop
+
+It's nothing but a techniqe to reuse a logic, and with this we can add it some more functionality
+so that our reused component would look slightly different
+
+22) Routing:- Routing we use for navigating throughout the application.
+we can open different components on a specific endpoint, so yaa thats what routing is
+npm install react-router-dom
+
+23) Redux :-
+	Store:- import createStore    const store = createStore(reducerFunction, {}); <<<---------<
+	Action:- inside a Function return type in object; and parameter is payload; then export   |   
+		export const actionName = () => { type :'ACTION'}                                 |
+	reducer:- inside a reducerFunction parameter take initialState and action;                |
+		  switch(action.type){case 'ACTION' : return initial state(and extra logic);      |
+		  default : return state;                                                         |
+			then export function    >>>-------------------------------------------->>>^
+		Now in root file (main index.js) import store and
+	<Provider store={store}>     (import {Provider} from 'react-redux')
+         <App1 /> 
+        </Provider>
+
+		Now in the component where we want to use redux state
+	import {useSelector,useDispach} from 'react-redux'
+	import {actionName}
+	const myState = useSelector((state) => state.reducerFunction)
+    	const dispatch = useDispatch();
+
+	onClick={() => dispatch(functionCreatedInAction(payload))}
+ 
+			-----------------****React****-----------------
+
+1) What is Reactjs?
+	React is an open-source front-end JavaScript library. which is use for creating 
+user interface for single page application. 
+It was developed by Facebook. and it's current version is 18.2.0
+
+2) why is react so popular? / what are the features of React
+ a. Because It uses Virtual DOM instead of Real DOM. and it is considering that Real DOM
+    manipulations are expensive, which makes web applications perform faster.
+ b. React follows a unidirectional data flow. That means when designing a React app, 
+    we can nest child components within parent components. 
+    And since the data flows in a single direction, 
+    it becomes easier to debug errors and to know where the problem is(occurs) in an application.
+ c. also we can re-use components in react.
+ d. react is a library and it is easy to learn as compare to framworks like angular.
+
+3) what are states? 
+	The state is a built-in React object that is used to store data or information about
+the component. The state in a component can be changed over the time, and whenever it changes, 
+the component gets re-render.
+
+4) what are props?
+	Props are also built-in React object that provide a way to pass data from one component 
+to another component.	
+
+5)diffrentiate state and props?
+	:- state and props both hold some information but the diffrence between them is 
+props can be use to pass data from one component to another component, whereas state can not pass data,
+but states can be changed as it is mutable. props are immutable.
+
+6)diffrentiate useMemo and useCallback? (codestepbystep vid 5.58.20)
+	this two are hooks that we can use in functional component, useMemo hook return the memoize the value,
+basicaly it keeps track of previously computed value. and whenever the dependency of it's 
+array changes, insted of recalculating the entire logic it just return the memoize value
+					and
+	the useCallback hook returns a memoized callback function. think of memoization as
+caching a value so that it does not need to be recalculated.
+
+	so, the main difference between useCallback and useMemo is the type of value they return. 
+useCallback returns a memoized callback function, while useMemo returns a memoized value.
+
+	The useMemo() hook is used in functional components to memoize
+expensive functions so that they are only called when value of the state changes
+rather than on every render.     const result = useMemo(() => expensivesunction(input), [input]);
+
+
+
+React.memo => not a hook
+React.memo is a higher order component, it prevent rerender of component if its props or state do not changed
+
+
+
+
+7)What is a higher-order component in React?
+A higher-order component (HOC) is a function that takes a component as a argument
+and returns a new component.
+	A higher-order component acts as a container for other components. 
+They are generally used when multiple components need to use a same logic. 
+so basicaly higher-order component can pass any 'component' as a props to multiple components.
+in that way we dont need to write that common logic again and again we can simply re-use it. 
+This helps to keep component simple and enables re-usability.
+
+8) What is refs?
+   *********detailed answer needed*********
+Ref are an attribute of the DOM elements.
+The primary purpose of the refs is to find the DOM elements easily.
+It should be avoided in most cases but, sometimes it is used when we need to access DOM.
+
+9) What Does DOM Stand For? (what is dom and virtual dom?)
+	The term "DOM" stands for Document Object Model. it refers to the
+representation of the entire user interface of a web application as a tree
+data structure. it has different node, and element ya thats what dom is.
+
+10) What is Virtual DOM?
+	so React keeps a lightweight representation of the
+real DOM, and that is known as the virtual DOM.
+so when the state of an object changes, virtual DOM changes
+only that object in the real DOM, rather than updating the
+entire DOM. 
+
+so React keeps a lightweight representation of the real DOM, and that is known as the virtual DOM.
+	Whenever any underlying data changes, the entire UI is re-rendered in
+Virtual DOM representation. Then the difference between the previous DOM representation and the
+new one is calculated. Once the calculations are done, the real DOM will be updated with only
+the things that have actually changed.
+
+
+11) What is Redux? 
+	Redux is an open-source, JavaScript library used to manage the application state.
+Redux uses a single store to store all the states, and we can access that state 
+anywhere in any component of the application. it has 3 components
+
+	Store: where we store the state of the application.
+	Action: actions are plane javascript object where we have type and payload
+		where we discribe what action need to be perform. and
+	Reducer: Specifies how the application's state changes in response to 
+		actions we've sent to the store.
+
+redux principle:-
+1)single source of truth
+	The globle state of our application is stored as an object inside a single store.
+2)state is read only
+	The only way to change the state is to dispach an action.
+
+12) What is Context?
+React context provide a way to pass data or state through the component tree
+without having to pass props through each nested component.
+basicaly when we use context, we don't need to do prop drilling.
+It helps us to share data globally between various react components.
+
+  import {createContext} from 'react'; ==> App.js
+we need 'Provider' for sending data and
+
+	const FirstName = createContext() [same as we use let ipRef = useRef()]
+function ComponentA(){
+	return(
+	<FirstName.Provider value={'Aniket'}>
+		<ComponentB>
+	</FirstName.Provider>
+)} 
+	
+
+we need 'Consumer' for reciving the data, consumer allways take arrow function.
+
+'useContext' is a hook that we use for consume data.
+so when we use Consumer for getting data, we have to write a lenghy code, that reduce the
+code readability. so that's where the useContext hook comes into the picture.
+  
+  import {useContext} from 'react';
+  import {FirstName} from './App.js';
+function ComponentB(){
+	const fname = useContext(FirstName)
+	return(
+		<div>My name is {fname}</div>
+	)
+}
+
+
+13)Explain the useEffect() Hook?
+	The useEffect Hook allows us to perform side effects in function components.
+like data fetching, direct DOM updates, timers like setTimeout().
+This hook accepts two arguments: the callback and the dependencies,
+which allow us to control, when the side effect should execute.
+
+a)useState? :-
+
+b)useNavigate :- in function Navigate('/');  
+
+c)useRef :-
+
+d)useMemo :- 
+
+e)useCallback :-
+
+f)useContext :- 'useContext' is a hook that we use for consume data. while working with context.
+
+g)useReducer :- 'useReducer' is a hook that is use for state management in React.
+		useReducer is related to reducer function. 
+		this hook accept two parameter useReducer(reducer,initialState)
+		reducer(currentState,action)
+
+14)What is React Router? v6.6.1
+	React router is a standard library used in React applications, 
+to handle routing and allow us to navigation between various components of the application.
+
+in App.js => import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
+
+and where we want to use link => import {Link} from 'react-router-dom';
+
+	<Router>
+            <Header />
+            <Routes>
+                <Route path='/' element={<ProductList />}></Route>           
+                <Route path='/ProductDetails/:id' element={<ProductDetails />}></Route>           
+                <Route>404 Page not found</Route>           
+            </Routes>
+        </Router>
+
+and where we want to use link => import {Link} from 'react-router-dom';
+
+	<Link to={`/ProductDetails/${id}`}>
+        <div>
+            <h3>{item}</h3>
+            <p1>{price}</p1>
+        </div>
+        </Link>
+
+in old version we were using <Switch> insted of <Routes>
+	<Switch>
+             <Route path='/' exact component = {<ProductList />}></Route>           
+             <Route path='/ProductDetails/:id' exact component = {<ProductDetails />}></Route>           
+             <Route>404 Page not found</Route>           
+        </Switch>
+
+
+15)What are React Hooks? 
+Hooks is a special JavaScript function that allows you use state and
+other React features without writing a class.
+React hooks were added in v16.8 version of react. 
+
+16) Advantages of React ?
+1. It has a shorter learning curve for JavaScript developers and has large
+and active community support.
+2. react applications are faster than the normal application Because React uses virtual DOM, 
+which makes web application perform faster.
+3. The use of JSX allows us to write simpler code.
+
+17)Disadvantages of React
+1. Because React is just a frontend library, we need other languages and libraries
+to build a complete application.
+
+18)use of componentWillUnmount()? (******incompeate answer*******)
+when the component is not needed and need to be unmounted from the browser DOM.
+we use componentWillUnmount()
+It will be used to cancel any outgoing network requests, or remove all event listeners 
+associated with the component. 
+
+
+it calls just before the component is unmountened from the DOM, it is also use to 
+create memory spaces.
+
+19)what is callback?     (******incompeate answer*******)
+callback is a function that we can pass as an argument to another function that is called callback.
+
+
+21)functional or class which components are better?
+functional components are much more better than the class components. because in 
+functional components we can write cleaner code, and after the introduction of hooks
+we can now perform side effect like components lifecycle in functional component.  
+
+
+23)middleware?(Thunk)
+when we make a async api call in action creator, we need to convert our action creator from synchronous
+to asynchonous action creator and this conversion can be possible with the help of middleware.
+I've worked with redux thunk to make asynchonous action creator.
+
+synchonous action creator. :- Immediately return the action object with type and payload.
+asynchonous action creator. :- Take some amount of time to return the action object with type and payload.
+
+without middleware dispach immediately forword the action object to reducer but
+middleware will hold the action creator untill it recive the data from server. once it get the data
+then it will send the data to reducer and then reducer will create new state.
+
+in store.js import {applyMiddleware, compose} from 'redux'
+const composeEnhancer = gitlink
+
+const store = createStore(){  
+	combineReducer,
+	composeEnhancer(applyMiddleware(thunk))
+}
+
+24) what is jsx?
+jsx stands for JavaScript XML. jsx allows us to write HTML look a like code
+within our javaScript code, which makes it easier to create the stucture of our user interface.
+
+25)what are events in react?
+any action performed by user is known as event, like
+mouse click, pressing a button or scrolling the page this kind of actions are events.
+events are named using camelCase insted of using lowercase. and then events are 
+passed as a function.
+
+26)diff btw react and angular?
+a) angular is a framework whereas react is just a liabrary.
+b) then angular is the compleate MVC whereas react only work on 'view' layer of MVC.
+   using react we can build ui compo only.
+c) angular uses the real dom, react uses virtual dom.
+d) in angular we have 2 way data binding so we can pass data from parent to child and child to parent
+   but in react we have unidirection data flow so we can pass data from parent to child only.
+e) angular is created and maintained by google. react is created and maintained by facebook.
+ 
+
+
+			-----------------****JavaScript****-----------------
+*)ES6 features ?
+	1)let and const keywords
+	2)Arrow functions
+	3)Template literals `My name is ${firstName} ${lastName}`
+	4)Array and Object Destucturing
+	5)Promises
+	6)multi-line string using backticks(`)
+	7)spread and rest operator
+	8)
+	9)
+	10)
+these are some es6 features which are really helpfull while buiding application.
+
+1) diffrentiate between let/const and var?
+Both let and var are used for variable declarations in JavaScript.
+the difference between these two is var keyword has function scope, 
+while let keyword has a block scope.
+
+2)what is scope?
+scope means the area of code where we can access the variable or functions.
+
+ Globle scope :- means all the variables and functions having global scope can be accessed 
+		 from anywhere inside the code.
+			var globalVariable = "Hello world";
+
+ Function scope :- which means that all the variables and functions having function scope 
+		can be accessed only within a function in which they are defined. and not outside of it.
+		also known as local scope. 
+
+ Block scope :- any variable declared inside a block { }, can be accessed only inside that block.
+		Block scope is related to the variables declared using let and const. 
+		Variables declared with var do not have block scope.
+ 
+ lexical scope :- lexical scope is the ability of a function scope to access variables from the parent 
+		scope. means,
+		lexical scope allows inner functions to access the scope of their outer functions.
+
+3) Explain Closures in JavaScript?
+Closure is one of the most powerfull feature of javascript. it forms around a function along with it's 
+lexical scope. that means inner function can access any variable from their outer scope, even after
+the outer scope has closed.
+
+closures are basicaly formed whenever a variable that is define outside of the current scope
+can be access within the current scope.
+
+closure is one of the most powerfull feature of javascript. using closure inner function is granted
+to have access of any variable and function which is defined in it's outer function scope.
+but outer function doesn't have accses to the variable and function which is defined in inner function. 
+that means Closure is an ability of a function to remember the variables and functions 
+that are declared in its outer scope.
+
+benifit if they asked :- it provide a sort of security to data inside inner funtion.
+
+4) What is callback function?
+callback is a function that we can pass as an argument to another function that is call callback.
+
+A callback is a function that will be executed after another function gets execute
+	
+means we can use this callback function as parameter of another function.
+basicaly callback is a function which will be called in future. i mean later in the time.
+
+function sum(a,b){
+	return a + b;
+}
+
+function calc(cb,x,y){
+	return cb(x,y);
+}
+console.log(calc(sum,4,5))
+
+
+5) What is the use of promises in javascript? 
+Promises are used to handle asynchronous operations in javascript.
+
+Before promises, callbacks were used to handle asynchronous operations. 
+But due to the limited functionality of callbacks, using multiple callbacks to handle 
+asynchronous code can lead to unmanageable code.
+
+A promise is created using the Promise constructor which takes a callback function 
+with two parameters, resolve and reject respectively.
+
+We can consume any promise by attaching .then() and .catch() methods to the consumer.
+
+then() method is used to access the result when the promise is resolved/fulfilled.
+
+catch() method is used to access the result/error when the promise is rejected.
+
+
+6) What are the primitive data types in JavaScript?
+ *Primitive types
+Primitive data types can store only a single value. 
+Number
+String
+Boolean
+Null - It represents a non-existent or a invalid value.
+Undefined - When a variable is defined but not assigned any value.
+
+ *Non-primitive types
+non-primitive data types are used to store multiple and complex values. 
+
+Array and Object
+
+*********------------53,54,55 coding questions?------------*********
+
+7) Explain Hoisting in javascript ?
+Hoisting is the default mechanism of javascript where all the variable and function declarations are moved on top of the scope.
+
+Note - Variable initializations are not hoisted, only variable declarations are hoisted:-
+
+variable declared with let and const are also hoisted but, unlike var, are not initialized with a default value. 
+so it will throw an error that the variable cannot access before initialization.
+
+var x;
+console.log(x); // Outputs "undefined" since the initialization of "x" is not hoisted
+x = 23;
+Note - To avoid hoisting, you can run javascript in strict mode by using “use strict” 
+on top of the code: "use strict";
+x = 23; // Gives an error since 'x' is not declared
+var x; 
+
+
+
+8)What do you mean by strict mode in javascript?
+strict mode as it's name suggest it allow us to write code in a 'strict' environment,
+
+The 'use strict' keyword is used to define strict mode at the start of the script. 
+when we use strict mode,
+we can not use duplicate arguments.
+we can not use the JavaScript keyword as a parameter or function name.
+Strict mode is supported by all browsers.
+
+9)what is javascript?
+JavaScript is a dynamic programming language that's used for web development.
+it allows us to implement dynamic featurs on web pages that cannot be done with only
+HTML and CSS.
+javascript is a single threaded language. it run on browser as well as on server via node.js
+
+10) Explain “this” keyword.
+The “this” keyword refers to the object that is curruntly calling the function.
+
+ var obj = {
+    name:  "vivek",
+    getName: function(){
+    console.log(this.name);
+  }     
+}
+
+       
+var getName = obj.getName;
+       
+var obj2 = {name:"aniket", getName };
+obj2.getName();
+Can you guess the output here?
+
+The output will be “aniket”. 
+
+11) What is the difference between Session storage and Local storage?
+local storage and session storage both are browser storage.
+So Websites store some data in local machine to reduce the loading time;
+
+The data stored in session storage gets deleted when a page session ends.
+means when user close the tab the data gets deleted.
+(when we close the browser)
+so we can store sencetive data here which we want to erase after session.
+
+and The data stored in local storage does not get deleted at the end of a
+browsing session.
+
+localStorage.setItem('key','value')
+let name =  localStorage.getItem('key')
+console.log(name)  //value
+
+12)what is deep copy and shallow copy?
+primitive data type is immutable and it allways create deep copy, by default.
+
+deep copy means if you do any change in the copied variable, it will never reflect into 
+the original one. because they share different memory address. so in premitive data 
+type their is allways deep copy.
+
+shallow copy means if we copy an object into new reference variable, both old and new 
+reference variable point to the same object in memory. so if we do any change in the 
+copied variable, it will reflect into the original one as well.
+
+there are some methods using this methods we can create deep copy of non-primitive data type.
+let originalValue = {
+    name:  "vivek",
+    age: 26,
+    getName: function(){
+    console.log(this.name);
+    },
+	address:{
+		city:'pune',
+		state:'maharastra'}
+     
+}
+a) JSON.stringify => this method can create deep copy but it can not copy function.
+let copiedValue = JSON.parse(JSON.stingify(originalValue))
+
+b) Object.assign => this method can create partial deep copy means if the object is 
+		   containing nested object then the change will reflect in original object as well.
+let copiedValue = Object.assign({}, originalValue) 
+c) spread operator => we can use spread operator to create deep copy.
+let copiedValue = {...originalValue}
+mutation should be in this way
+copiedValue = {...copiedvalue,
+		name: 'Aniket',
+		address:{...copiedValue.address,
+			city:'Amravati' 
+			}
+		}
+
+
+13)Array methods (map, filter, reduce)?
+const array = [1,2,3,4,5]
+    const result = array.map((val)=>{
+            return val*2
+    })
+    console.log(result) // [2,4,6,8,10]
+
+    const result2 = array.filter((val)=>{
+        return val>3
+    })
+    console.log(result2) // [4,5]
+
+    const result3 = array.reduce((val,cval)=>{
+        return cval+=val
+    },0)
+    console.log(result3) // 15
+
+map     := create a new array from calling a function for each and every element.
+		og array will not change.
+filter  := create a new array filled with elements that pass a test provided by a function.
+		og array will not change.
+reduce  := this method does not change the original array. it returns a single value
+		which is the function accumulated result.
+forEach := forEach method work like map method but it does not return anything, 
+		it mutates the original array.
+push    := we can add data to the end of an array using push method.
+pop     := we can remove the last element from array using pop method.
+shift   := we can remove the first element from array using shift method.
+unshift := we can add data to the begining of an array using unshift method.
+
+13.1) what is the difference between map and forEach?
+	this two methods works quite similarly but difference between them is  
+forEach does not return anything, whereas map return new array with new array element.
+and map method does not muted the original array but forEach muted the original array.
+
+14)what is async await in javascript?
+async and await make promises easier to write.
+if we wrote the word 'async' before a function means that function will always return a promise.
+and the keyword 'await' makes javascript wait until the promise fullfild and returns its result.
+
+15) Rest parameter and spread operator ?
+answer in coding question. 
+
+14) Difference between arrow function and normal function ?
+Arrow function has been introduced in ES6. it has diffrent syntax than normal function 
+it provides a more concise syntax for writing
+function expressions by removing the 'function' keyword.
+we can remove 'return' keyword too, if we have only one statement.
+and arrow function can not be hoisted.
+
+15)what is API
+'Application programing interface'
+
+16)difference between undefine, undeclared and null
+undefine means the variable has been declared but the value has not yet been assigned to that variable.
+undeclered means that variable is not declared or does not exist in the program.
+null is actually an assignment value that we can assign to any variable that means 
+that variable contain no value.
+
+17) what is destructuring ?
+destructuring is a feature of es6. which allows us to unpack values.
+we can use destructuring to extract data from arrays and objects and assign them to the variables. 
+
+18) What is a Temporal Dead Zone?
+Temporal Dead Zone is a behavior that occurs with variables declared using let and
+const keywords before they are initialized.
+
+19) What are the pop-up boxes available in JavaScript?
+Pop-up boxes available in JavaScript are Alert Box, Confirm Box, and Prompt Box.
+
+20)what is higher order function?
+Higher order function is a function that accepts functions as parameters and returns its result.
+and the argument which we pass in higher order function is become callback function.
+
+function x(fn){
+	fn();
+}
+
+function y(){
+	console.log('i am from fn y')
+
+}
+
+x(y);
+
+		-----------------****HTML & CSS****-----------------
+
+1) what is the diffrence between semantic and non-semantic elements?
+ A semantic element clearly describes it's meaning.
+ there definition in the code tells the browser and the developer
+ what they are supposed to do.
+ ex:- header, footer, form, table, article, aside, nav.
+
+ non-semantic elements :- unlike semantic element they dont have any meaning.
+ they don't tell about the content inside them.
+ ex:- div, span.
+
+2) HTML5 is the latest version we are using.
+ if we want to upload a file we have to use input tag with type='file'
+
+3) CSS3 is the current version we are using.
+
+	css syntax ==> selector{property:value}
+	class ==> .class-name (we can use multiple classes)
+	id ==> #id-name (we can use only one id)
+
+		<h1 class="btn btn-1" id="id-name">Heading-1</h1>
+
+4) how many ways are their to implement css file in html?
+	their are 3 ways we can implement css file in html
+inline css, internal css, and external css.
+
+inline css :- we can write css inside the html tag which we want to design. style='color:red'
+
+internal css :- when we use css directly in html head using <style> tag then it is internal css.
+	<style> h1{color:blue} </style>
+
+external css :- here we create css file, we write css in that file and then we can add that file in html.
+	<link> rel='stylesheet' type='text/css' href='(path)style.css' </link>
+
+5)what is the position attribute?
+their are 5 position attribute
+static which is default one, second is relative
+third is absolute and fourth is fixed and sticky.
+ 
+6)what is the difference between margin and padding?
+the space between element and the border which is inner space is known as padding.
+and the space between border and the other element is known as margin.  
+
+7) flexbox attribte ?
+ justify content is use for align the content horizontly
+ align item is use for align item virticaly
+and if we write justify content and align item as center (display:flex) 
+then we will get our item in the center. 
+flex-direction
+flex-wrap
+
+8) what is meta tags ?
+meta tags are HTML tags to provide additional information about a page to search engines and other 
+clients. meta tags are added to the <head> section of HTML page.
+
+9) what are the difference between relative and absolute position.?
+this two are basically css positions. 
+
+10)How to center a div?
+know the answer
+
+11) difference between relative and absolute position ?
+relative position is relative with parent, it changes from their own position to top,left,bottom and right.
+while absolute position find their just parent athorwise it is relative to the root element.
+
+position absolute : if parent element has relative position property then absolute child element will 
+move according to it's parent element otherwise it will consider root HTML as it's parent and 
+will act according. 
+
+position fixed : this position will fix the element on webpage where we will define.
+		and it is relative to the root.
+
+position sticky : using this property child element can only move within the parent container.
+		child element can't get out of parent container.
+	top and left will be considered from top and left of webpage and not from parent container. 
+		it is relative to the parent.
+
+12)what is psedo class?
+psedo classes are used to add style or effect to selectors like hover effect
+h1:hover{color : orange;}
+:link
+:visited
+these are some psedo
+
+13)diff between focus and visible
+
+14)flex
+ 
+		-----------------****HR Round****-----------------
+
+ first greet the interviewer 'good mornig sir/mam'
+1) Tell me about yourself ?
+	Thank you very much for shortlisting me for this interview. (for hr)
+first of all thank you very much for giving me this opportunity to introduce myself.
+my name is Aniket Bhadke. i'm from Amravati. i've completed B.sc. from SGBAU Amravati.
+currently i am working with cinetrix infotech. I have been working their as a react js developer,
+and I have 3 year of experience in front end web development. in my career i have worked on react.js
+and along with react i've worked on react-router, redux, axios, html, css, bootstrap, 
+material ui and some other web technologies to build robust and scalable application.
+
+2) why are you planning to change your current job ?
+	I'm looking for career opportunities for my professional growth.
+and want to learn new things and want to explore myself to give my best. 
+
+3) Do you have any other offers with you ?
+No, I don't have any offers with me now as recently only i've started looking for jobs.
+
+Yes, I have offer with one company. But i feel the position they offered is not what i am looking for. 
+so, I am searching for other jobs.
+
+4) tell me about your roles and responsibilities of your current work ?
+
+	We had been assigned tasks based on agile methodology. My daily job roles and
+responsibilities were to be 
+Meeting with the development team to discuss user interface ideas and applications.
+Develope and maintain the frontend codebase using technologies such as ReactJS, HTML, CSS, and JavaScript.
+and Reviewing application rquirements and interface desings.
+Developing new ui features using react.js
+Buiding reusable components for future use.
+Optimizing components.
+
+(Requirement gathering, analysis, implementing and testing it and finally
+deploying it. Also working on any production issues.)
+
+5) what are your stenghts & weakness ?
+my gratest Strenght is I am a quick learner. Beacause of that i have learnt new technologies easily 
+in my project. also i am very collaborative. i always enjoy working in team.
+
+comming to my weakness, I am straightforward and i trust everyone easily.
+
+6) what do you know about our company ?
+	I know this company is one of the largest company in the industry. Your headqarter is in NY
+and there are 25000 employees working in your company as per the website. thats why i was excited
+to apply for this job position.
+
+7) why should we hire you ?
+I possess all the skills and experience that you're looking for. I am prety sure that I am the 
+best candidate for this job role.
+
+8) Are you a good team player ?
+yes, I enjoy working in a team environment. I get along well with people and 
+also I belive only team work will make you more productive.
+
+9) where do you see yourself in five year's from now ?
+In five year from now, I see myself as a knowlegable professional Having in-depth knowledge 
+of diffrent technologies. so i see myself on a senior position in the company.
+
+10) what is your expected salary ?
+Thank you for asking, based on my market research and my experties in this area 
+it would be worth anywhere between 7lpa and 8lpa. but I am open to hear about companies compensation
+structure for this job role.
+
+11) How did you shift from non it to it ?   
+Programming is all about logical thinking and problem solving. these skills are not branch 
+specific. and i am good at math and resoning so i think i can be learn any coding language quickly.
+
+sir, I believe that i can perform best when i'm surrounded by productive and professional people.
+
+
+12)can you explain the gap in your career?
+I took 2 year gap after my studies as i was preparing for a competitive exam.
+unfortunately that didn't work out for me.
+
+ 
+Project Explain
+Name:- I have been working on a e-commerce project.
+
+Brief introduction:-
+This project deals with developing on e-commerce website for Online saree sale. It provides
+the user a catalog of differnt type of sarees available for purchase in the store. in
+order to faciliate online purchase a shopping cart is provided to user.
+
+Technology and tools, architecture of project:-
+on the frontend we have used reactjs library
+Agile process
+
+my role :- 
+• Developing and maintaining the frontend codebase using technologies such as React, 
+HTML, CSS, and JavaScript. 
+• Implementing responsive design to ensure the application works seamlessly across 
+devices, from desktop to mobile. 
+
+
+        -----------------##############----------------------
+
+interview taken by Akhilesh
+1)HTML entites?
+HTML entities are the reserved characters that are used in an HTML document. it allows us to use
+symbols, charectors and mathematical operators.
+each of these codes starts with an ampersand and ends with a semicolom.
+ex:- &copy; for copyright,   &lt; for <   ,  &gt; for >
+
+2)Difference between id's and classes?
+in HTML, both Id and Class are the element selector and are used to identify an element.
+the basic difference between Id and class is that only one id selector can be attached to an element
+in a page, because id is uniqe, while the class selector can be applied to several elements on a single page.
+
+3)Difference between strong and bold tag?
+	To bold the text in HTML, we can use either the <strong> tag or the <b> bold tag. browser will
+bold the text inside both of these tags the same way, but the <strong> tag indicate that the text
+has some importance. as <strong> tag is a sementic tag. but bold tag is not.
+
+4)Difference between display non and visibility hiden?
+visibility:hidden => hides the element, but it will still takes space in the layout.
+display:none      => will removes the element from the document. so it will not take any space.
+
+5)How to open link in anothor tab?
+it is quite easy. all we need to do is add target="_blank" in anchor tag {underscore _ }
+
+6)Difference between sementic element and non-sementic element ?
+ i know the answer
+
+7)CSS box model?
+the css box model is essentially a box that wraps around every HTML element. it consists of the actual content,
+padding, borders and margin.
+
+element => padding => border => margin
+
+8)Different type of selectors?
+	1)element selector :- we can simply use element name for applying css
+	2)id selector
+	3)Class selector
+	4)universal selector :- that is used to select every element on the entire webpage.
+	5)Group selector :- this selector is used to style all comma separated elements with same style.
+	6)Attribute selector :- [href]
+	7)pseudo class selector :- h1:hover{color : orange;}
+
+9)z index?
+z index is a css property that defines the order of overlapping HTML elements.
+element with the higher index will be placed on top of elements with a lower index.
+z index only work with positioned elements (position:absolute, position:relative)
+
+10)How to center a div element?
+a) .parendiv{position : relative;}
+   .childdiv{
+	position : absolute;
+	left : 50%;
+	right : 50%;
+	transform : translate(-50%,-50%);
+	}
+
+b) .parentdiv{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	}
+
+c) .parentdiv{
+	display : grid;
+	place-items : center;
+	}
+
+11)Difference between == and === ?
+== will compare two variables only. if both are same it will give us true output but
+=== will compare two variables as well as their data type. 
+
+console.log({a:1}=={a:1})  //false
+console.log({a:1}==={a:1}) //false
+
+in JS, Object are compared based on references. so here we are comparing 2 different
+objects so their references will be different. thats why false.
+
+12)What are the datatypes in javascript?
+know this answer
+
+13)Difference between var,let and const?
+	if i use const for array can i change the array?
+
+14)what is immediatly invoking function?
+immediatly invok function expresion also known as iife. it is a javascript function that runs
+as soon as it is defined. it is also known as self executing function.
+	(function test(){console.log('test')})();
+  
+
+15)what is lexical scope?
+lexical scope is the ability for a function scope to access variables from the parent scope.
+lexical scope allows inner functions to access the scope of their outer functions.
+ 
+we call the child function to be lexically bound by that of the parent function.
+
+16)what is event capturing and event bubbling?
+event capturing :-
+	this proccess start with capturing the event of the outermost element and then 
+propagate to the innermost element.
+event bubbling :-
+	this proccess start with capturing the event of the innermost element and then 
+propagate to the outermost element.
+
+we can stop this propagation using event.stopPropagation()	
+event.stopImmediatePropagation() method will stop all the eventListener of same element.
+
+when it's needed to stop the default behavier of element we use
+event.preventDefault()
+
+17)what is arrow function? 
+Arrow function has been introduced in ES6. their syntax is different than normal function.  
+it provides a more concise syntax for writing 'function expressions' by removing the 'function' keyword.
+we can remove 'return' keyword too, if we have only one line of code.
+
+	does arrow function support hoisting => NO
+	does let and const support hoisting => Yes,but it goes in temporary dead zone.
+Temporal Dead Zone is a behavior that occurs with variables declared using let and
+const keywords before they are initialized.
+
+it will throw a ReferenceError : because that variable cannot be accessed befor initialization 
+
+18)10 features of ES6 ?
+
+19)what is promis.all ?
+Promise.all is a promise that takes an array of promises as an input (an
+iterable), and it gets resolved when all the promises get resolved or any
+one of them gets rejected.
+
+Promise.all([Promise1, Promise2, Promise3]) .then(result) => { console.log(result)}
+ 
+20)what is Set and map ?(new datatype)
+A set is a data stucture used for storing data of any length and kind. sets are iterables 
+and have various special methods that are differnt from arrays. it looks like array but 
+their is a differece.
+in sets we can not access elements by index, and we can not have diplicate elements.
+so sets are the great choice when we want to store data without duplicates.
+
+A map is another data structure used to store key-value pairs of data of any kind and length.
+maps are similar to objects, in maps, we can use anything as a key.
+but in object we can use string, symboles,and numbers as a key.
+
+21)what is virtual dom ? which dom is faster => both are same ?
+
+22)what is jsx ?
+
+23)can we write react code without jsx ?
+import React from 'react';
+
+export default function App() {
+	return React.createElement(
+	'h1',
+	{ className: 'greeting' },
+	'Hello, this is a JSX Code!'
+	);
+	}
+
+24)why do we need key while map ?
+keys help react to identify which items have changed, or are added, or removed. 
+
+25)difference between class and functional component ?
+	Class Components: These types of components can hold and manage their own
+state and have a separate render method to return JSX on the screen. They are also
+called Stateful components as they can have a state.
+	Functional Components: These types of components have no state of their own and
+only contain render methods, and therefore they are also called stateless components.
+	class components are Complex as compared to the stateless component as it has complex syntax.
+on the other hand function component are very simple and easy to understand.
+	class components can work with all lifecycle methods.
+	function components can not work with any lifecycle method.
+
+26)what is pureComponent ? How does it prevent re-rendering? (codeStepbyStep vid 5.46.26)
+React.PureComponent
+pureComponent is only used in class components. In pure component render method calls only, 
+when their is something updated if previous state and current state both are same 
+then render method doesn't call. so in that way it prevents unnecesary re-rendering.
+and It helps to increase the applications performance.
+it works with both state and props.
+
+
+27)Explain lifecycle method ? how to use componentWillUnmount in useEffect? 
+
+28)how to pass data in sibling component? => context and reduct
+
+29)what is lazy loading?
+lazy loading is the practice of delaying load or initialization of resources until 
+they're actually needed 
+to improve the performance and save system resources.
+
+30)what is error boundary? 
+Error boundary is React component that catch javaScript errors anywhere in the app,
+(child component tree)  log those errors, and display a fallback UI.
+
+A class component become an error boundary by defining either or both
+getDerivedStateFromError and componentDidCatch lifecycle method.
+
+To create an error boundaries, we have to create a class component and define 
+a state variable for determining whether the error boundary has cought an error.
+
+class ErrorBound extend React.Component(){
+constructor(props){
+	super(props)
+	this.state={hasError:null}
+}
+
+static getDerivedStateFromError(error){
+	return {hasError:true}	
+}
+
+componentDidCatch(error,info){
+	console.log(error)
+	console.log(info)
+}
+
+render(){
+	return(
+	<div>{ this.state.hasError ? <h1>Something went Wrong...<h1> : this.props.children }</div>
+)
+}
+}
+
+and we need to import error boundry in app.js and creat a wraper and inside it pass the component(User)
+The placement of wrapper is compleatly up to us we can wrap entire app or individual component.
+
+with error bundarary, if there is an error, we can trigger a fallback UI;
+whereas, with try...catch, we can catch errors in our code.
+
+suspense is similar to ErrorBoundary, but instead of catching the error, it is
+catching Promise from child component.
+
+31)what is memo?
+
+
+31)what is higher order?
+
+32)difference between forEach and map ?
+know its answer
+
+33)Explain call, bind, apply method ? 
+using call method we can do function borrowing. we can borrow a function of other object and 
+use it with the data of some other object.
+
+let name = {
+	fistName : 'Ethan',
+	lastName : 'Hunt'
+}
+
+let printFullName = function(city, state){
+	console.log(this.firstName + " " + this.lastName + 'from' + city + ',' + state)}
+
+let name2 = {
+	fistName : 'John',
+	lastName : 'Wick'
+}
+
+so, in call method
+the first argument will be reference object and second argument will be parameter of function.
+	a call method is used to invoke a function directly.
+
+printFullName.call(name,'NY','USA')  // Ethan Hunt from NY,USA
+printFullName.call(name2,'NY','USA')  // John Wick from NY,USA
+
+apply is exactly same as a call method but the only difference is it takes second argument as a 
+array list of the parameter which need to be pass to the function.
+
+printFullName.call(name,'NY','USA')  // Ethan Hunt from NY,USA
+printFullName.apply(name2,['NY','USA'])  // John Wick from NY,USA
+
+bind method does not directly envoke like call method but gives us a copy of exactly same method
+which can be invoke later. 
+
+let printMyName = printFullName.bind(name,'NY','USA')
+printMyName(); // Ethan Hunt from NY,USA
+
+
+34)var z = 10;
+var show = function(){
+    delete z;
+    return z;
+}
+console.log(show())
+
+delete operator :- delete operator is used to delete the property of an object.
+so here 'z' is not an object but its a primitive type, so it will not give any 
+error intead simply display value as 10.
+
+35)what is axios?
+axios is a npm package that we can use for making http request
+
+36)
+37)
+38)
+39)
+40) 
+
+this keyword referes to the current object.
+
+Axios,async await,try catch,get,post methods ==>
+const getApiData = async () => {
+	try{
+	const res = await axios.get('api link/posts');
+	setMyData(res.data)
+	}
+	catch(error){
+	setIsError(error.message)
+}
+
+useEffect(()=>{
+	getApiData();
+},[])
+
+in api folder we can create anothor folder (contacts) and inside it
+
+import axios from 'axios'
+
+export default axios.create({
+	baseUrl : "https://localhost:3000/"
+})
+
+Now you can import api from '...api/contacts'
+and use it like axios means (api.get instead of axios.get)
+
+
+callstack
+
+
+41)Redux-thunk middleware
+inside store 
+import {createStore,applyMiddleware,compose} from 'redux';
+import thunk from 'redux-thunk';
+
+
+42)fetch data
+fetch('https://jsonplaceholder.typicode.com/users')
+.then(res => res.json())
+.then(json => json.map(u=>console.log(u.company.name)))
+
+[{},{}] if we get array of object map the array then console value inside it.
+
+***************GIT & GITHUB**********************
+steps to use git
+1) find git repo => fork it => clone it => initiate it 
+=> add commite and push => pull req => team lead will merge
+
+*)git init => it initialize our local repo to git repo and it create a .gid folder
+
+
+********************BOOTSTRAP CLASSES*******************
+text classes :-
+text-start  
+text-center
+text-end
+
+text-lg-center => that will center text on large screen
+text-uppercase
+text-lowercase
+text-capitalize
+
+font classes:-
+font size fs-1 to fs-5
+font weight and italics
+fw-bold
+fw-bolder
+fw-lighter
+fst-italic
+fst-normal
+
+margin:-
+mt-1 (top), mr-1 (right), mb-1 (bottom), ml-1 (left), 
+mx-auto => for same margin at left and right
+mx-1,2 
+my-auto => for same margin at top and bottom
+my-4,5  (according to our convinience)
+
+width and height
+w-25,50,75,100
+h-25,50,75,100
+
+breakpoints
+xs, sm, md, lg, xl, xxl
+
+grid
+.container => .row => .col-sm-4
+
+

@@ -1,0 +1,894 @@
+ coding questions :)
+1)find the next palindrome number. if i pass any integer 
+value to func it should return next palindrome number.
+ex. if pass 105=> it should return 111
+
+ function isPalindrome(num){
+  return num.toString() === 
+  num.toString().split('').reverse().join('') 
+}
+
+
+function nextPal(num){
+  num++;
+  while(!isPalindrome(num)){
+    num++
+  }
+  console.log(`next palindrome is ${num}`)
+}
+
+nextPal(111)
+
+
+
+2)print the 1st 'n' prime num
+ex. n = 5 output is 2,3,5,7,11
+
+3)write a func fib() that takes an integer n and return the 
+series up to nth fibonacci number.
+ex. fib(1)  => 1
+ex. fib(2)  => 1,1,3
+
+function fib(n){
+  let a = 1;
+  let b = 0;
+  let c = []
+  for(let i=1; i<=n; i++){
+      let temp = a + b
+      c.push(temp)    
+      a = b;
+      b = temp;
+  }
+  console.log(c)
+}
+
+fib(3)
+
+ 
+4)react progress bar increment after 1 sec.
+
+ 
+
+1)diff btw map and forEach?
+const arr1 = [2,3,5]
+const res = arr1.map(e => e*2)
+console.log(res)
+
+const res2 = arr1.forEach((e, ind, arr) => arr[ind] = e * 3)
+console.log(arr1)
+
+2)age must be above 18 program?
+import React,{useState} from "react";
+
+const App = () => {
+    const [data,setData] = useState('');
+    const change = (e) =>{
+        console.log(e.target.value)
+        setData(e.target.value)
+    }
+    return(
+        <div>
+            {data >= 18  ? <h1>{data}</h1> : 'Age must be above 18'}
+            <input value={data} onChange={change}/>           
+        </div>
+    )
+}
+
+export default App;
+
+
+3)this keyword?
+tell def and then give example.
+The “this” keyword refers to the object that the function is a property of.
+this keyword refers to the object.
+let person = {
+    name:'Ram',
+    age:25,
+    printInfo:function() {
+        console.log(`My name is ${this.name} and my age is ${this.age}`)
+    }
+}
+
+person.printInfo();
+console.log(person);//
+
+
+4)hoisting related question?
+Hoisting is the default behaviour of javascript where all the variable and function 
+declarations are moved on top of the scope.
+
+function test(){
+console.log(a)
+var a = 10;
+}
+test();  //undefined
+
+5)elaborate sprade and rest operator?
+spread and rest operator are introduced in ES6 
+and its syntax is quiet simple (...)
+
+spread operator (...) allows us to copy all or part
+of an existing array or object into another array or object.
+
+if we want to combine two array
+let arr1 = [1,2,3]
+let arr2 = [4,5,6]
+let combinearr = [arr1,arr2] 
+console.log(combinearr) // [[1,2,3],[4,5,6]]
+let combinearr = [...arr1,...arr2] 
+console.log(combinearr) // [1,2,3,4,5,6]
+
+The rest parameter syntax allows a function to accept
+number of arguments as an array. function(ar1,ar2,...rest)
+
+example
+const student = {
+    name: 'Darshan',
+    age: 25,
+    address: 'Amravati'
+}
+
+let student2 = {...student, name:'Ram'}
+console.log(student2)
+
+const {name, ...rest} = student;
+console.log(name, rest)
+
+
+6)explain event loop?
+javascript has a runtime model based on an event loop, 
+which is responsible for executing the code, and as
+javascript is a single threaded language it watches
+the call stack and cheaks if there's any code to run in
+the task queue.
+ 
+This loop constantly checks whether  the call stack is
+empty or not and if it is, the functions waiting to be
+executed in the callback queue get pushed into the 
+call stack.
+
+7)expalin closures?
+closure is one of the most powerfull feature of javascript. using closure inner function is granted
+to have accses of any variable and function which is defined in it's outer function scope.
+but outer function doesn't have accses to the variable and function which is defined in inner function. 
+that means Closure is an ability of a function to remember the variables and functions 
+that are declared in its outer scope.
+
+let a = 0
+function abc(){
+     let a = 2
+    console.log(a)
+}
+abc()
+
+
+8)program reduce the no. till one digit 
+5432 => 5+4+3+2 = 14 => 1+4 => 5 like this?
+
+answer:-
+// function shrink(num){
+//     const check = num.toString().split('').map(Number);
+//     console.log(check)
+
+//     const total = check.reduce((a,b)=>{return a+b},0)
+//     if(total > 9){
+//         // const again = total.toString().split('').map(Number);
+//         // console.log(again)
+
+//         // const againTotal = again.reduce((a,b)=>{return a+b},0)
+//         // console.log(againTotal)
+//         shrink(total)
+//     }else{
+//         console.log(total)
+//     }
+// }
+// shrink(4987)
+
+9)how to remove duplicats ?
+let name = 'Aniket Bhadke';
+let res = [...new set(name.split(''))]
+console.log(res);
+	o/p => [a,n,i,k,e,t, ,b,h,d]
+
+10)how will you fetch this API?
+import React,{useState,useEffect} from 'react';
+import axios from 'axios';
+
+default export function App(){
+const [users,setUsers] = useState(null)
+
+useEffect(()=>{
+	axios.get('api-url')
+	.then((res)=>setUsers(res.data))
+	.catch((err)=>console.log(err))
+},[])
+return(
+	users && users.map((user)=> <div>{user.company.name}</div>)
+)
+}
+
+
+11)what is callback expalin?
+
+12)how to send data from child to parent?
+in child component take input box onChange={getData}
+in parent function getdata(e){setData(e.target.value)}
+
+<h3>{data}</h3>
+<Child getData={getData}>
+
+
+13)How to show sting and number separate
+data = [ "A", 10, "B", 20, "C", 30, "D", 40, "E"]
+
+Output : alpha = [ "A", "B", "C", "D"]
+           num = [10, 20, 30, 40]
+Senwell HR12:13 PM  06-06-23 my first interview
+ans :- 
+let alpha = [];
+let num = [];
+
+data.map(e=>{
+  if(typeof(e) === "string"){
+    alpha.push(e)
+    // console.log('alpha = ',alpha)
+  }else{
+    num.push(e)
+    // console.log('num = ', num)
+  }
+  console.log('alpha = ',alpha , 'num = ', num)
+  console.log([...alpha,...num])
+})
+
+
+14)sort this data = [ -10, -40, -20, 90, 100, 40, 80,120, 40]
+in assending and desending order? wihout sort method.
+
+for(let i=0; i < data.length ;i++){
+  for(let j=i; j < data.length; j++){
+    if(data[i] > data[j]){      //for asending > decending <
+      // swap = data[i];
+      // data[i] = data[j];
+      // data[j] = swap;
+      [data[i],data[j]] = [data[j],data[i]]
+    }
+  }
+}
+console.log(data)
+
+15)swap two variable without using third variable
+let str1 = 26;
+let str2 = "ab";
+
+//with using third variable
+// let temp;
+// temp = str1;
+// str1 = str2;
+// str2 = temp
+
+// without using third variable
+[str1,str2] = [str2,str1]
+console.log(str1,str2)
+
+16)How to convert first letter of string into upperCase?
+function data(str){
+   var inputStr = str.split(' ')
+   console.log(inputStr)
+  var firstLetter = inputStr
+  .map(e=>e.charAt(0).toUpperCase() + e.slice(1)) 
+  .join(' ')
+ console.log(firstLetter)
+
+ }
+ data('aniket bhadke')
+
+*) diff bet slice and splice
+slice returns a piece of the array but it doesn't affect the 
+original array. splice changes the original array by removing,
+replacing, or adding values and returns the affected value.
+slice(start,end)
+slice(2,4) => will give from 2 to 3 index values
+slice(1) => will give form 1 to last index values
+
+splice(index, delete, 'new-value')
+splice(2,0,'aniket') => will add 'aniket' at index no 2 and 
+delete nothing
+splice(2,2,'aniket') => will add 'aniket' at index no 2 and 
+delete 2 values from 2nd index (means 2nd and 3rd index)
+
+17)how to find duplicate element in array?
+let arrNum = [2,4,5,3,7,8,2,4,3,9];
+// console.log(arrNum)
+let res = arrNum.filter((ele,ind,arr)=>ind!==arr.indexOf(ele))
+console.log(res)
+//to remove duplicate from array
+console.log([...new Set(arrNum)])
+//we can use filter method too just change !== to ==
+//find duplicate !== and for remove duplicate ==
+
+
+18)How to find max and min value in a given array.
+const maxVal = (arr) => {
+  return arr.reduce((a,c)=> a>c?a:c)
+}
+console.log(maxVal(arrNum))
+
+
+19)
+console.log('9' > '11')    //true  1st later will be compare while string
+console.log('9' > 11)      //false  when diff data type are
+			compared, they get converted to numbers
+console.log('' > -1)       //true  means 0 > -1
+console.log('aniket' > 1)  //false aniket will become NaN which is 
+		neither greter than, less than nor equal to any number
+
+
+20)let arr = [1,3,5,6]
+let obj = {...arr}
+console.log('obj',obj)
+what will be the output :=> obj {0: 1, 1: 3, 2: 5, 3: 6}
+
+21)let obj = {a:'one', a:'two'}
+console.log(obj)
+what will be the output :=> obj {a:'two'}  //last key will be stored
+
+28)convert array into object 
+let arr1 = ['a','b','f','r'];
+let obj = arr1.reduce((a,cval,ind)=>({...a,
+[cval]:cval}),{})
+console.log(obj)
+//o/p => {a: 'a', b: 'b', f: 'f', r: 'r'} 
+
+
+23)console.log(["a"] + ["b"]) //ab while concatinating two arrays
+                          // arrays will convert into string
+console.log([] + [])      // ""
+console.log(![])         //false
+console.log(![] + [])    //"false"
+
+
+24)how to reverse a string
+let numArr = 'Hello World';
+console.log(numArr)
+let res = numArr.split('').reverse().join('')
+console.log(res)
+
+//without reverse method
+let numArr = 'abcd';
+let r = '';
+for(let i=0; i<numArr.length; i++){
+  r = r + numArr[numArr.length -i -1]
+}
+console.log(r)
+
+25)what will be the output?
+let numArr = [2,1,3];
+let res = numArr.reduce((a,c)=>{
+  return a + c * 2
+})
+console.log(res)
+console.log(res)
+//if we provide dependency like 0
+// itteration will start 0 + 2*2 
+// if didn't give dependency then
+// itteration will start 2 + 1*2
+
+26)let num = 5 - '5' + 5 - "6";
+console.log(num)
+//5 + '5' while addition of num and str it will convert in str
+//and concanicate both str => 55
+//5 - '6' while substraction of num and str it will convert in 
+//num and perform substraction => -1
+//this is called type corection.
+
+27) merge two array and remove duplicate.
+let arr1 = [1,3,4,5,5]
+let arr2 = [2,4,6,6,8]
+let common = [...arr1,...arr2]
+let sortarr1 = [...new Set(common.sort())]
+console.log(sortarr1)
+
+
+29)add # at 5th position in a string
+let arr1 = "methods you can use to check";
+let finalres = arr1.split("")
+finalres.unshift(" ")
+console.log(finalres)
+
+for(let i= 1; i<finalres.length; i++){
+  if(i%5 === 0){
+    finalres[i] = '#';
+    console.log(finalres)
+  }
+}
+console.log(finalres.join(""))
+//o/p => meth#ds y#u ca# use#to c#eck 
+
+
+30)fibonacci series
+let a = 0;
+let b = 1;
+for(let i=0; i<=5; i++){
+    let temp = a + b
+    console.log(temp)
+    a = b;
+    b = temp;
+}
+
+31)how to fetch api using axios or fetch method?
+import "./styles.css";
+import {useState,useEffect} from 'react'
+// import axios from 'axios'
+
+export default function App() {
+  const [users,setUsers] = useState()
+// useEffect(()=>{
+//   axios.get('https://jsonplaceholder.typicode.com/users')
+//   .then((res)=>setUsers(res.data))
+//   .catch((e)=> console.log('error', e))
+//   console.log(users)
+// },[])
+useEffect(()=>{
+  fetch('https://jsonplaceholder.typicode.com/users')
+  .then((res)=>res.json())
+  .then(json => setUsers(json))
+  .catch(e=>console.log(e))
+},[])
+  return (
+    <div className="App">
+     {users && users.map((user)=> <div>{user.company.name}</div>)}
+    </div>
+  );
+}
+
+we can use try catch block while calling api
+useEffect(() => {
+    const fetchData = async () => {
+        try {
+            const response = await axios.get('https://jsonplaceholder.typicode.com/users')
+            setUsers(response.data)
+            console.log(users) 
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    fetchData()
+}, [])
+
+
+  
+32) explain what is callback function with example.
+A callback function is a function that is passed to another 
+function as an argument and is executed after some operation 
+has been completed.
+
+function sum(a,b){
+	 console.log(a + b);
+}
+
+function calculate(cb,x,y){
+	return cb(x,y);
+}
+calculate(sum,4,5) 
+
+33)make couter closure concept ?
+function counter(){
+    let a = 0
+    function newCount(){
+      console.log(a+=1)  
+    }
+    return newCount
+}
+let res3 = counter()
+res3()
+res3()
+res3()
+
+34) example of promise?
+let myPromise = new Promise(function(resolve,reject){
+let x = 20;
+if(x>= 5){
+    resolve(x)
+}else{
+    reject('error')
+}
+})
+
+myPromise.then(res => console.log(res))
+.catch(err => console.log(err))
+
+35)remove duplicate post object?
+
+let arr = [{name:"john",post:'dev'},
+          {name:"peter",post:'dev'},
+          {name:"john",post:'tester'},
+           {name:"sam",post:'tester'},]
+let check = {}
+let newArr = []
+
+for(let i=0; i<arr.length; i++){  
+    if(!check[arr[i].post]){
+        check[arr[i].post] = true;
+        newArr.push(arr[i])
+    }
+   
+}
+ console.log(newArr)
+
+36)How to make post request with fetch
+fetch('url', {
+	method : 'POST',
+	headers : {'Content-type' : 'aplication/json'},
+	body: JSON.stringify({
+		name,
+		email,
+		password })
+	})
+
+37)count the word in given string?
+const sentence = "My name is Aniket, I am a Software Developer"
+let temp = 0
+function test(str){
+  for(let i =0; i<str.length; i++){
+    if((str[i]) === " "){
+      temp++
+    }
+  }
+  console.log(temp += 1)
+}
+test(sentence)
+
+38) count the vowels in the given string.
+const sentence = "My name is Aniket, I am a Software Developer"
+let vowels = 'aAeEiIoOuU'
+let temp = 0
+for(let i=0; i<sentence.length; i++){
+  if(vowels.indexOf(sentence[i]) !== -1 ) {
+    temp += 1
+  }
+}
+console.log(temp)
+
+
+39)Surya R P5:07 PM
+.a  .b {}
+.a.b {}
+Surya R P5:09 PM
+.a > .b {}
+.a ~ .b {}
+Surya R P5:17 PM
+let a = 10;
+var a = 10;
+Surya R P5:18 PM
+const func = function() {
+}
+func();
+const func = function() {
+       console.log('hi');
+}
+Surya R P5:34 PM
+console.log('a');
+ const promise = new Promise((res, rej) => {
+    resolve('Success');
+    console.log('e');
+    setTimeout(() => console.log('b'), 0);
+ });
+
+ promise.then((val) => {
+    console.log(val); 
+    console.log('c');
+ });
+
+ console.log('d');
+
+
+
+Promise => promise is a solution to callback hell.
+promise is a promise of code execution. the code either
+execute or fails, in both the cases the subscriber will
+be notified.(with the help of .then and .catch method)
+
+
+
+
+IMP interview question:-
+1)what is event loop in js
+
+2)what is macrotask and microtask (queu)
+
+3)diff bet map,filter and reduce
+map:
+The map function is used to create a new array by 
+performing some operation to each element of the original 
+array.
+The new array will have the same length as the original 
+array.
+It does not modify the original array.
+
+filter:
+The filter function is used to create a new array 
+containing only the elements that meet a certain 
+condition (predicate).
+The new array may have fewer elements than the original 
+array, depending on how many elements satisfy the 
+condition.
+It does not modify the original array.
+
+reduce:
+The reduce function is used to accumulate values from an 
+array into a single value. 
+It returns the updated accumulator after each iteration, 
+and the final value of the accumulator becomes the result 
+of the reduce operation.
+It does not modify the original array.
+
+
+
+4) how promise and async await are dif from each other ?
+Promises and async/await are both concepts in JavaScript 
+used to work with asynchronous code and manage 
+asynchronous operations, but they are different in their 
+syntax and approach.
+
+Promise => promise is a solution to callback he ll.
+promise is a promise of code execution. the code either
+execute or fails, in both the cases the subscriber will
+be notified.(with the help of .then and .catch method)
+
+function fetchData() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const data = { name: 'John', age: 30 };
+      // Simulating success
+      resolve(data);
+      // Simulating an error
+      // reject(new Error('Data not found'));
+    }, 2000);
+  });
+}
+
+// Usage
+fetchData()
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+
+async/await:
+async/await is a feature more synchronous style of 
+writing asynchronous code.
+The async keyword is used to define a function that 
+returns a promise implicitly. Inside an async function, 
+you can use the await keyword before an asynchronous 
+operation to pause the execution until the promise is 
+resolved. This makes the code appear more like synchronous 
+code.
+The try/catch block can be used to handle errors that may 
+occur during the execution of the async function.
+Example of using async/await:
+
+javascript
+Copy code
+function fetchData() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const data = { name: 'John', age: 30 };
+      // Simulating success
+      resolve(data);
+      // Simulating an error
+      // reject(new Error('Data not found'));
+    }, 2000);
+  });
+}
+
+// Usage with async/await
+const getData = async () => {
+  try {
+    const data = await fetchData();
+    console.log(data); 
+  } catch (error) {
+    console.error(error);
+  }
+}
+getData()
+
+5)in which situation you should preffer async await
+over promises ?
+if we are using multiple asynchronous function which is depending
+on the first async function, then we should use await to wait
+first one to finish instead of promise chaining.
+but if we want to run them parallely then we should use promise.
+
+
+6)what all parameter you will consider to improve 
+the performence of your app.(lazy load )
+for improving the performence of the application we can
+follow some strategies like
+Utilize code splitting techniques to split your React 
+app's code into smaller chunks. This allows the user to 
+only download the required code for the current page, 
+that reduce the initial loading time.
+React's lazy loading (React.lazy) and dynamic imports 
+(import()) are useful tools for code splitting.
+ 
+React.lazy is a higher-order component (HOC) that allows 
+you to dynamically import a component and use it within a 
+Suspense component. The Suspense component is used to 
+handle the loading state while the dynamic import is in 
+progress.
+
+Example:
+
+import React, { lazy, Suspense } from 'react';
+
+const MyLazyComponent = lazy(() => import('./MyComponent'));
+const myLazyComponent = React.lazy(()=>{import(./mylazycomponent)})
+
+function App() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <MyLazyComponent />
+    </Suspense>
+  );
+}
+
+
+we should Use React's Context API to avoid prop-drilling 
+and pass data directly to components that need it.
+we can use redux also if application is complex.
+
+7)debugging techniques
+
+8)how to handle error in react
+
+Error boundary is React component that catch javaScript 
+errors anywhere in the app, (child component tree)  
+log those errors, and display a fallback UI.
+
+A class component become an error boundary by defining 
+either or both
+getDerivedStateFromError and componentDidCatch lifecycle 
+method.
+
+getDerivedStateFromError method is use to render a fallback UI 
+after an error is thrown and componentDidCatch lifecycle 
+method is used to log the error information.
+
+
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error){
+	return { hasError: true }
+  }
+	
+  componentDidCatch(error, info) {
+    // Handle the error (e.g., log it, display an error message)
+    console.error(error);
+    // Update state to show the error UI
+    this.setState({ hasError: true });
+  }
+
+  render() {
+    if (this.state.hasError) {
+      // Display a fallback UI when an error occurs
+      return <div>Something went wrong...</div>;
+    }
+    return this.props.children;
+  }
+}
+To use the Error Boundary, wrap the components you want to catch errors for:
+
+javascript
+Copy code
+function App() {
+  return (
+    <ErrorBoundary>
+      <YourComponentsHere />
+    </ErrorBoundary>
+  );
+}
+
+
+When working with asynchronous code (e.g., API calls), use 
+try/catch blocks to handle errors in a more structured way.
+
+
+9)form validation 
+we can use react-hook-form for form validation.
+
+const {register, handleSubmit, errors} = useForm()
+we need to use its properties like register,handlesubmit,err
+
+<div> 
+    <form onSubmit={handleSubmit(onsubmit)}>
+        <input type="text" name="username" 
+        ref={register({required:"username is required" })}/>
+        <p>{errors.username?.message }</p>
+  
+        <input type="email" name="email" 
+        ref={register({required:"email is required" ,
+        pattern:{value:"regex-code for checking", 
+        message:"This is not valid email"}})}/>
+        <p>{errors.email?.message }</p>
+        
+        <input type="password" 
+        name="password" 
+        ref={register({required:"password is required" ,
+        minLength:{
+            value:4, 
+            message:"password can't be less than 4 char"},
+        maxLength:{
+            value:8, 
+            message:"password can't be more than 8 char"}, 
+        message:"This is not valid password"}})}/>
+        <p>{errors.password?.message }</p>
+        <button>submit</button>
+    </form>
+</div>
+
+imp) the fn and variable that are declere inside the globle 
+scope will be added to the window object.
+ 
+1)why arrow function doesent support hoisting
+2)this keyword
+3)what is asyc await
+4)how to create popup box like modal of mui
+5)folder stucture of your project
+6)how to connect with backend
+7)compilation and execution context
+8)how to handle seo
+axios integration
+react coding best practices
+error boundary
+lazy loading
+react libraries other than axios, router, redux, mui, 
+bootstrap, styled component.
+skeleton
+ziya into
+practise how to present yourself to interviewer
+mui
+typescript interview question
+
+
+find def for Box,container,stack,Appbar,toolbar
+
+react coding
+1)make a counter that increment by 1 and after 5 sec it
+update by 5
+2)pass data from child to parent
+3)get name and email from user
+4)fetch api and show data in table
+5)pagination karnar nahi    jaa
+
+
+controld component uncontrolled compo
+memoization
+diff bet state and prop
+diff bet class and function comp
+redux middleware clear deffination
+theory cha ratta marne important
+importance of fragment, jsx
+ssr
+what is virtual dom
+  
+
+
+Api integration::-
+import axios from "axios"
+
+const BASE_URL = "https://localhost:8000/api/"
+const TOKEN = "after successfully login we get token in responce"
+
+export publicRequest = axios.create({
+	baseURL: BASE_URL,
+})
+
+export userRequest = axios.create({
+	baseURL: BASE_URL,
+	headers:{`Bearer ${TOKEN}`}
+})
+
+userRedux:- slice at 1:46:48 lama dev
+

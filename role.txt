@@ -1,0 +1,73 @@
+Project explain :-
+	 This project deals with developing an e-commerce 
+website for Online saree sale. this project has some key 
+features like 
+Product listing: Displaying products with their details.
+Product search and filtering: Allowing users to search and 
+filter products based on various criteria.
+Shopping cart: Allowing users to add products to their 
+cart and manage the cart.
+User authentication and registration: Enabling users to 
+sign up, log in, and manage their accounts.
+Checkout process: Guiding users through the purchase 
+process.
+Order history: Allowing users to view their past orders.
+
+
+and the technologies and libraries that we have used in 
+the project, 
+such as React.js, Redux (if used for state management), 
+React Router for navigation, Axios for API calls, etc.
+
+
+My role :-
+my role primarily revolved around front-end development 
+and user interface design. I was responsible for creating 
+and managing various React components, ensuring they were 
+reusable.
+
+comming to my key responsibilities 
+I designed and implemented several core components of the 
+application, such as the product listing, product details, 
+shopping cart.
+
+I contributed to setting up and managing the application's 
+state, using Redux for centralized state management. 
+This allowed us to have a consistent data flow throughout 
+the app. 
+
+I integrated the front-end with the backend APIs using 
+Axios, ensuring smooth data retrieval and updates. This 
+involved fetching product information, user data, and 
+managing the shopping cart state.
+
+   
+also I configured React Router to handle navigation within 
+the application, enabling users to move between pages 
+efficiently.
+
+
+folder structure:-
+components{announcement,category,ctegoryItem,product,navbr }
+pages{home,productlist,productDetails,cart,login}
+redux  
+
+
+
+Git
+1) first i'll get access to the project repo.
+2) i'll have to clone the project in our machine.(git clone 'link')
+3) create new branch for creating & going inside branch
+	git checkout -b branchName 
+4) after updating the code (git add .)& then (git commit -m 'msg')
+5) git push origin branchName
+6) for merging code to master click on contribute and pull request 
+on github site
+7) create pull request
+8) then team lead will review and merge pull request.
+
+
+
+
+
+ 
