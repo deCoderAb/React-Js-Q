@@ -1,0 +1,55 @@
+fetch data using Axios////====
+
+import axios from "axios";
+
+export default axios.create({
+    baseURL: "http://localhost:3000"
+})
+
+//in App.js file where we want to use api 
+import api from "./api"
+
+//for getting data GET Method
+const retriveContacts = async () => {
+    const response = await api.get('/contacts')
+    return response.data;
+}
+
+useEffect(()=>{
+    const getAllContacts = async () =>  {
+        const allcontacts = await retriveContacts()
+        if(allcontacts){
+            setContacts(allcontacts)
+        }
+    }
+    getAllContacts()
+},[])
+
+//for adding data POST Method
+const addContactHandler = async (contact) => {
+    const request = {
+        id: uuid(),
+        ...contact
+    }
+
+    const response = await api.post("/contacts", request)
+    setContacts([...contact, response.data])
+}
+
+//for deleting data DELETE Method
+const deleteContactHandler = async (id) => {
+    await api.delete(`/contacts${id}`)
+    const newContactList = contacts.filter((contact) => {
+        return contact.id !== id
+    });
+    setContacts(newContactList);
+}
+
+//for updating data PUT Method
+const updateContactHandler = async (contact) => {
+    const response = await get.put(`/contacts/${contact.id}`, contact)
+    const {id, name, email} = response.data;
+    setContacts(contacts.map(contact => {
+        return contact.id == id ? {...response.data} : contact
+    }))
+}

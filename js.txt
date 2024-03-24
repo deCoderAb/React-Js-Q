@@ -1,4 +1,4 @@
- 1) code step by step full video
+1) code step by step full video
 2) react with typescript video freecodecamp
 3) interview video
 4) react small projects
@@ -1084,7 +1084,7 @@ lexical scope allows inner functions to access the scope of their outer function
  
 we call the child function to be lexically bound by that of the parent function.
 
-16)what is event capturing and event bubbling?
+16) what is event capturing and event bubbling?
 event capturing :-
 	this proccess start with capturing the event of the outermost element and then 
 propagate to the innermost element.
