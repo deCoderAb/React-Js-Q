@@ -10,6 +10,7 @@ Server url + api endpoint = rest api
 28+44+40+25
 
 Notes:-
+console.loh("hfghgghjjhh)
 
 1) Inside return :- JSX and   <Components/> only.
 Variable assigning and functions and States all this thing should be written before return.
